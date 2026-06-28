@@ -26,7 +26,7 @@ The CTG-CSA framework proposes a Physics-Guided Machine Learning (PGML) paradigm
 ├── requirements.txt     # Python dependencies
 └── README.md            # Project documentation
 
-~~~
+```
 
 ## ⚙️ Environment Setup
 
