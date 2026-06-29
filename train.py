@@ -20,8 +20,22 @@ BETA1, BETA2 = 0.5, 0.999
 # --- Physical Priors from Paper (Section 3.6) ---
 # T, RH, Wind, Solar, Pressure
 W_C_REF = [0.35, 0.25, 0.20, 0.15, 0.05] 
-# Dummy spatial prior for 20 stations (e.g., 10 coastal@0.7, 10 inland@0.3)
-W_PRIOR_SPATIAL = [0.7]*10 + [0.3]*10 
+
+def compute_vdsp(variances, tau=1.6):
+    """
+    Computes the Variance-Driven Softmax Prior (VDSP) as defined in Equation 13 of the paper.
+    Maps empirical temporal variances smoothly into a [0,1] attention weight space.
+    """
+    var_tensor = torch.tensor(variances, dtype=torch.float32)
+    scaled_var = var_tensor / tau
+    w_prior = torch.nn.functional.softmax(scaled_var, dim=0)
+    return w_prior.tolist()
+
+# Dummy historical temporal variances for 20 stations 
+# (e.g., first 10 represent highly variable coastal stations, last 10 are stable inland stations)
+dummy_empirical_variances = [5.5]*10 + [1.2]*10 
+# Dynamically generate the spatial weights using VDSP (Eq. 13) instead of hardcoding
+W_PRIOR_SPATIAL = compute_vdsp(dummy_empirical_variances, tau=1.6)
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
