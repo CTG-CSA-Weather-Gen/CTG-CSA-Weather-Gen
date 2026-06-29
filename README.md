@@ -3,7 +3,7 @@
 [![Python 3.8](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/release/python-3817/)
 [![PyTorch](https://img.shields.io/badge/PyTorch-%23EE4C2C.svg?style=flat&logo=PyTorch&logoColor=white)](https://pytorch.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20997004.svg)](https://doi.org/10.5281/zenodo.20997004)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21032666.svg)](https://doi.org/10.5281/zenodo.21032666)
 
 This repository contains the official PyTorch implementation of the **CTG-CSA** model from the paper:  
 > *"High-Fidelity Synthetic Meteorological Year Generation Model Integrating Physical Priors and Dual Attention"*  
